@@ -173,39 +173,23 @@ document.addEventListener("DOMContentLoaded", function () {
        GET PROJECT NAME
     ========================================= */
 
-    let projectName = "nexo";
+let projectName = "nexo";
 
+try {
+    const search = window.location.search;
 
-    try {
+    if (search) {
+        const match = search.match(/[?&]project=([^&]+)/i);
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-
-        const selectedProject =
-            params.get("project");
-
-
-        if (selectedProject) {
-
-            projectName =
-                selectedProject
-                    .trim()
-                    .toLowerCase();
-
+        if (match && match[1]) {
+            projectName = decodeURIComponent(match[1])
+                .trim()
+                .toLowerCase();
         }
-
-    } catch (error) {
-
-        console.error(
-            "URL ERROR:",
-            error
-        );
-
     }
-
+} catch (error) {
+    console.error("URL ERROR:", error);
+}
 
     console.log(
         "Project requested:",
