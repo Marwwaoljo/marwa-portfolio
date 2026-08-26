@@ -5,8 +5,6 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
 
-   alert("PROJECT JS WORKING");
-console.log("PROJECT JS WORKING");
     /* =========================================
        PROJECTS DATA
     ========================================= */
@@ -152,7 +150,6 @@ console.log("PROJECT JS WORKING");
 
     };
 
-      const params = new URLSearchParams(window.location.search);
     /* =========================================
        GET PROJECT PAGE
     ========================================= */
