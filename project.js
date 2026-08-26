@@ -187,7 +187,7 @@ function loadProject() {
         projectName.trim().toLowerCase();
 
 
-       alert(
+       console.log(
         "Project requested:",
         projectName
     );
