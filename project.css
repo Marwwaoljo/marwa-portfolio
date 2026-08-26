@@ -1,0 +1,772 @@
+/* =========================================
+   PROJECT PAGE
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #090909;
+    color: #f1eee7;
+    font-family: "Cairo", sans-serif;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.project-navbar {
+
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: 70px;
+
+    padding: 0 5%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: rgba(9, 9, 9, 0.82);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+
+    z-index: 999;
+
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #f1eee7;
+
+    text-decoration: none;
+
+}
+
+
+.logo-mark {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #d6b878;
+
+    color: #d6b878;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 17px;
+
+}
+
+
+.logo-text {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #99958c;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    transition: .3s ease;
+
+}
+
+
+.back-icon {
+
+    color: #d6b878;
+
+    font-size: 17px;
+
+}
+
+
+.back-btn:hover {
+
+    color: #d6b878;
+
+}
+
+
+/* =========================================
+   PROJECT DETAIL
+========================================= */
+
+.project-detail {
+
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: auto;
+
+    padding: 120px 5% 70px;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.project-detail-header {
+
+    max-width: 850px;
+
+    margin-bottom: 45px;
+
+}
+
+
+.project-category-detail {
+
+    display: inline-block;
+
+    color: #d6b878;
+
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.project-detail h1 {
+
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(48px, 13vw, 110px);
+
+    line-height: .95;
+
+    font-weight: 600;
+
+}
+
+
+.project-detail h1 span {
+
+    display: block;
+
+    color: #d6b878;
+
+    font-style: italic;
+
+    font-weight: 500;
+
+}
+
+
+.project-description {
+
+    max-width: 650px;
+
+    margin: 25px 0 0;
+
+    color: #99958c;
+
+    font-size: 12px;
+
+    line-height: 2;
+
+}
+
+
+/* =========================================
+   VIDEO
+========================================= */
+
+.project-video-wrapper {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background: #111;
+
+    border: 1px solid rgba(214,184,120,.15);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45);
+
+}
+
+
+.project-main-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    background: #090909;
+}
+
+/* =========================================
+   INFO GRID
+========================================= */
+
+.project-info-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 60px;
+
+    margin-top: 80px;
+
+}
+
+
+.project-info-block {
+
+    padding-top: 22px;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+}
+
+
+.project-number {
+
+    margin-bottom: 14px;
+
+    color: rgba(214,184,120,.65);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.project-info-block h2 {
+
+    margin: 0 0 18px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    font-weight: 500;
+
+}
+
+
+.project-info-block p {
+
+    margin: 0;
+
+    color: #929087;
+
+    font-size: 11px;
+
+    line-height: 2.1;
+
+}
+
+
+/* =========================================
+   TECHNOLOGIES
+========================================= */
+
+.project-technologies {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+.project-technologies span {
+
+    padding: 8px 12px;
+
+    border: 1px solid rgba(214,184,120,.18);
+
+    color: #aaa69c;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.project-features {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 8px;
+
+}
+
+
+.project-feature {
+
+    padding: 13px 12px;
+
+    background: #10100f;
+
+    border: 1px solid rgba(255,255,255,.05);
+
+    color: #9b978e;
+
+    font-size: 9px;
+
+}
+
+
+.project-feature::before {
+
+    content: "✦";
+
+    margin-left: 7px;
+
+    color: #d6b878;
+
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.project-bottom {
+
+    margin-top: 100px;
+
+    padding: 45px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+}
+
+
+.project-bottom h2 {
+
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(28px, 5vw, 45px);
+
+    font-weight: 500;
+
+}
+
+
+.project-bottom h2 span {
+
+    color: #d6b878;
+
+    font-style: italic;
+
+}
+
+
+.next-project {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 20px;
+
+    border: 1px solid rgba(214,184,120,.3);
+
+    color: #d6b878;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    transition: .3s ease;
+
+}
+
+
+.next-project span {
+
+    font-size: 17px;
+
+}
+
+
+.next-project:hover {
+
+    background: #d6b878;
+
+    color: #111;
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .project-detail {
+
+        padding-left: 6%;
+        padding-right: 6%;
+
+    }
+
+    .project-info-grid {
+
+        gap: 35px;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+
+    .project-navbar {
+
+        height: 62px;
+
+        padding: 0 5%;
+
+    }
+
+
+    .logo-mark {
+
+        width: 30px;
+
+        height: 30px;
+
+        font-size: 15px;
+
+    }
+
+
+    .logo-text {
+
+        font-size: 11px;
+
+    }
+
+
+    .back-btn {
+
+        font-size: 9px;
+
+    }
+
+
+    .back-icon {
+
+        font-size: 15px;
+
+    }
+
+
+    .project-detail {
+
+        padding:
+
+            105px
+
+            5%
+
+            55px;
+
+    }
+
+
+    .project-detail-header {
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .project-category-detail {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .project-detail h1 {
+
+        font-size: clamp(43px, 15vw, 70px);
+
+        line-height: .92;
+
+    }
+
+
+    .project-description {
+
+        font-size: 11px;
+
+        line-height: 2;
+
+        margin-top: 20px;
+
+    }
+
+
+    /* VIDEO */
+
+    .project-video-wrapper {
+
+        border-radius: 0;
+
+    }
+
+
+
+    /* INFO */
+
+    .project-info-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        margin-top: 55px;
+
+    }
+
+
+    .project-info-block {
+
+        padding-top: 18px;
+
+    }
+
+
+    .project-info-block h2 {
+
+        font-size: 24px;
+
+        margin-bottom: 14px;
+
+    }
+
+
+    .project-info-block p {
+
+        font-size: 10px;
+
+        line-height: 2;
+
+    }
+
+
+    /* TECHNOLOGIES */
+
+    .project-technologies {
+
+        gap: 6px;
+
+    }
+
+
+    .project-technologies span {
+
+        padding: 7px 10px;
+
+        font-size: 8px;
+
+    }
+
+
+    /* FEATURES */
+
+    .project-features {
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 6px;
+
+    }
+
+
+    .project-feature {
+
+        padding: 11px 8px;
+
+        font-size: 8px;
+
+    }
+
+
+    /* BOTTOM */
+
+    .project-bottom {
+
+        margin-top: 65px;
+
+        padding: 35px 0;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+
+    }
+
+
+    .project-bottom h2 {
+
+        font-size: 30px;
+
+    }
+
+
+    .next-project {
+
+        width: 100%;
+
+        justify-content: center;
+
+        padding: 13px;
+
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .project-detail {
+
+        padding-left: 4%;
+
+        padding-right: 4%;
+
+    }
+
+
+    .project-detail h1 {
+
+        font-size: 43px;
+
+    }
+
+
+    .project-description {
+
+        font-size: 10px;
+
+    }
+
+
+    .project-info-grid {
+
+        gap: 35px;
+
+    }
+
+
+    .project-features {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
