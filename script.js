@@ -2,15 +2,40 @@
    LOADER
 ========================================= */
 
-window.addEventListener("load", () => {
+(function () {
 
     const loader = document.getElementById("loader");
 
-    setTimeout(() => {
-        loader.classList.add("hide");
-    }, 1500);
+    if (!loader) return;
 
-});
+    function hideLoader() {
+        loader.classList.add("hide");
+
+        // إزالة الـLoader نهائيًا بعد انتهاء الأنيميشن
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 900);
+    }
+
+    // إخفاء الـLoader بعد تحميل الصفحة
+    if (document.readyState === "complete") {
+
+        setTimeout(hideLoader, 1200);
+
+    } else {
+
+        window.addEventListener("load", () => {
+
+            setTimeout(hideLoader, 1200);
+
+        }, { once: true });
+
+    }
+
+    // حماية إضافية لـ Safari
+    setTimeout(hideLoader, 4000);
+
+})();
 
 
 /* =========================================
@@ -19,15 +44,19 @@ window.addEventListener("load", () => {
 
 const navbar = document.getElementById("navbar");
 
-window.addEventListener("scroll", () => {
+if (navbar) {
 
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
+    window.addEventListener("scroll", () => {
 
-});
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+
+    });
+
+}
 
 
 /* =========================================
@@ -38,18 +67,33 @@ const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const mobileClose = document.getElementById("mobileClose");
 
-menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.add("open");
-});
 
-mobileClose.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-});
+if (menuBtn && mobileMenu) {
+
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("open");
+    });
+
+}
+
+
+if (mobileClose && mobileMenu) {
+
+    mobileClose.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+    });
+
+}
+
 
 document.querySelectorAll(".mobile-menu a").forEach(link => {
 
     link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
+
+        if (mobileMenu) {
+            mobileMenu.classList.remove("open");
+        }
+
     });
 
 });
@@ -62,35 +106,52 @@ document.querySelectorAll(".mobile-menu a").forEach(link => {
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");
 
-window.addEventListener("scroll", () => {
 
-    let current = "";
+if (sections.length && navLinks.length) {
 
-    sections.forEach(section => {
+    window.addEventListener("scroll", () => {
 
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
+        let current = "";
 
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-        ) {
-            current = section.getAttribute("id");
-        }
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionTop + sectionHeight
+            ) {
+
+                current =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (
+                link.getAttribute("href") ===
+                `#${current}`
+            ) {
+
+                link.classList.add("active");
+
+            }
+
+        });
 
     });
 
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-        }
-
-    });
-
-});
+}
 
 
 /* =========================================
@@ -101,56 +162,94 @@ const revealElements = document.querySelectorAll(
     ".service-card, .project-card, .about-text, .about-image, .skill-item, .process-item"
 );
 
+
 revealElements.forEach(element => {
+
     element.classList.add("reveal");
+
 });
 
 
-const revealObserver = new IntersectionObserver(
-    (entries) => {
+if ("IntersectionObserver" in window) {
 
-        entries.forEach((entry, index) => {
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
 
-            if (entry.isIntersecting) {
+            entries.forEach((entry, index) => {
 
-                setTimeout(() => {
-                    entry.target.classList.add("show");
-                }, index * 80);
+                if (entry.isIntersecting) {
 
-                revealObserver.unobserve(entry.target);
-            }
+                    setTimeout(() => {
 
-        });
+                        entry.target.classList.add("show");
 
-    },
-    {
-        threshold: 0.12
-    }
-);
+                    }, index * 80);
 
-revealElements.forEach(element => {
-    revealObserver.observe(element);
-});
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+} else {
+
+    // دعم Safari القديم والمتصفحات التي لا تدعم Observer
+
+    revealElements.forEach(element => {
+
+        element.classList.add("show");
+
+    });
+
+}
 
 
 /* =========================================
    PROJECT HOVER
 ========================================= */
 
-const projectCards = document.querySelectorAll(".project-card");
+const projectCards =
+    document.querySelectorAll(".project-card");
+
 
 projectCards.forEach(card => {
 
-    const image = card.querySelector(".project-image");
+    const image =
+        card.querySelector(".project-image");
+
+
+    if (!image) return;
+
 
     card.addEventListener("mousemove", (e) => {
 
         if (window.innerWidth <= 800) return;
 
-        const rect = card.getBoundingClientRect();
+        const rect =
+            card.getBoundingClientRect();
 
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+
+        const x =
+            e.clientX - rect.left;
+
+        const y =
+            e.clientY - rect.top;
+
 
         const rotateX =
             ((y / rect.height) - 0.5) * -3;
@@ -158,8 +257,12 @@ projectCards.forEach(card => {
         const rotateY =
             ((x / rect.width) - 0.5) * 3;
 
+
         image.style.transform =
-            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             scale(1.01)`;
 
     });
 
@@ -178,19 +281,30 @@ projectCards.forEach(card => {
    HERO PARALLAX
 ========================================= */
 
-const heroVisual = document.querySelector(".hero-visual");
+const heroVisual =
+    document.querySelector(".hero-visual");
 
-window.addEventListener("mousemove", (e) => {
 
-    if (!heroVisual || window.innerWidth <= 800) return;
+if (heroVisual) {
 
-    const x = (window.innerWidth / 2 - e.clientX) / 70;
-    const y = (window.innerHeight / 2 - e.clientY) / 70;
+    window.addEventListener("mousemove", (e) => {
 
-    heroVisual.style.transform =
-        `translate(${x}px, ${y}px)`;
+        if (window.innerWidth <= 800) return;
 
-});
+
+        const x =
+            (window.innerWidth / 2 - e.clientX) / 70;
+
+        const y =
+            (window.innerHeight / 2 - e.clientY) / 70;
+
+
+        heroVisual.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    });
+
+}
 
 
 /* =========================================
@@ -201,19 +315,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     anchor.addEventListener("click", function (e) {
 
-        const targetId = this.getAttribute("href");
+        const targetId =
+            this.getAttribute("href");
 
-        if (targetId === "#") return;
 
-        const target = document.querySelector(targetId);
+        if (
+            !targetId ||
+            targetId === "#"
+        ) return;
+
+
+        const target =
+            document.querySelector(targetId);
+
 
         if (!target) return;
 
+
         e.preventDefault();
 
+
         target.scrollIntoView({
+
             behavior: "smooth",
+
             block: "start"
+
         });
 
     });
@@ -225,45 +352,70 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    SKILLS ANIMATION
 ========================================= */
 
-const skillBars = document.querySelectorAll(".skill-bar span");
+const skillBars =
+    document.querySelectorAll(".skill-bar span");
 
-const skillObserver = new IntersectionObserver(
-    (entries) => {
 
-        entries.forEach(entry => {
+if ("IntersectionObserver" in window) {
 
-            if (entry.isIntersecting) {
+    const skillObserver =
+        new IntersectionObserver(
+            (entries) => {
 
-                const finalWidth = entry.target.style.width;
+                entries.forEach(entry => {
 
-                entry.target.style.width = "0%";
+                    if (entry.isIntersecting) {
 
-                setTimeout(() => {
-                    entry.target.style.transition = "width 1.4s ease";
-                    entry.target.style.width = finalWidth;
-                }, 100);
+                        const finalWidth =
+                            entry.target.style.width;
 
-                skillObserver.unobserve(entry.target);
+
+                        entry.target.style.width =
+                            "0%";
+
+
+                        setTimeout(() => {
+
+                            entry.target.style.transition =
+                                "width 1.4s ease";
+
+                            entry.target.style.width =
+                                finalWidth;
+
+                        }, 100);
+
+
+                        skillObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.4
             }
+        );
 
-        });
 
-    },
-    {
-        threshold: 0.4
-    }
-);
+    skillBars.forEach(bar => {
 
-skillBars.forEach(bar => {
-    skillObserver.observe(bar);
-});
+        skillObserver.observe(bar);
+
+    });
+
+}
 
 
 /* =========================================
    CURSOR GLOW
 ========================================= */
 
-const cursorGlow = document.createElement("div");
+const cursorGlow =
+    document.createElement("div");
+
 
 cursorGlow.style.position = "fixed";
 cursorGlow.style.width = "180px";
@@ -273,13 +425,48 @@ cursorGlow.style.pointerEvents = "none";
 cursorGlow.style.zIndex = "999";
 cursorGlow.style.background =
     "radial-gradient(circle, rgba(214,184,120,.06), transparent 70%)";
-cursorGlow.style.transform = "translate(-50%, -50%)";
+cursorGlow.style.transform =
+    "translate(-50%, -50%)";
+
 
 document.body.appendChild(cursorGlow);
 
+
 window.addEventListener("mousemove", (e) => {
 
-    cursorGlow.style.left = `${e.clientX}px`;
-    cursorGlow.style.top = `${e.clientY}px`;
+    cursorGlow.style.left =
+        `${e.clientX}px`;
+
+    cursorGlow.style.top =
+        `${e.clientY}px`;
+
+});
+
+
+/* =========================================
+   SAFARI / MOBILE SAFETY
+========================================= */
+
+window.addEventListener("pageshow", () => {
+
+    const loader =
+        document.getElementById("loader");
+
+
+    if (loader) {
+
+        setTimeout(() => {
+
+            loader.classList.add("hide");
+
+            setTimeout(() => {
+
+                loader.style.display = "none";
+
+            }, 900);
+
+        }, 100);
+
+    }
 
 });
