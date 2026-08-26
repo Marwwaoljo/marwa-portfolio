@@ -156,7 +156,7 @@ function loadProject() {
 
     if (!page) {
 
-        console.error(
+        alert(
             "ERROR: #projectPage غير موجود في HTML"
         );
 
@@ -187,7 +187,7 @@ function loadProject() {
         projectName.trim().toLowerCase();
 
 
-    console.log(
+       alert(
         "Project requested:",
         projectName
     );
