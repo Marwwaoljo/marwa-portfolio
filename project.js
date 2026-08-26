@@ -1,15 +1,21 @@
 /* =========================================
    PROJECT JS
-   Safari Safe Version
+   Safari + Chrome Safe Version
 ========================================= */
+
 "use strict";
-document.addEventListener("DOMContentLoaded", function () {
+
+(function () {
 
     /* =========================================
        PROJECTS DATA
     ========================================= */
 
     const projects = {
+
+        /* =========================================
+           NEXO
+        ========================================= */
 
         nexo: {
             category: "E-COMMERCE",
@@ -46,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
 
+        /* =========================================
+           ROQAN
+        ========================================= */
+
         roqan: {
             category: "COFFEE BRAND",
             title: "Roqan",
@@ -80,6 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
 
+        /* =========================================
+           BURGER
+        ========================================= */
+
         burger: {
             category: "RESTAURANT",
             title: "Hero",
@@ -113,6 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
+
+        /* =========================================
+           ABAYA
+        ========================================= */
 
         abaya: {
             category: "FASHION E-COMMERCE",
@@ -150,454 +168,587 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
 
-    /* =========================================
-       GET PROJECT PAGE
-    ========================================= */
-
-    const page =
-        document.getElementById("projectPage");
-
-
-    if (!page) {
-
-        console.error(
-            "ERROR: projectPage not found"
-        );
-
-        return;
-
-    }
-
 
     /* =========================================
-       GET PROJECT NAME
+       LOAD PROJECT
     ========================================= */
 
-let projectName = "nexo";
+    function loadProject() {
 
-try {
-    const search = window.location.search;
+        try {
 
-    if (search) {
-        const match = search.match(/[?&]project=([^&]+)/i);
+            /* -------------------------------------
+               GET MAIN
+            ------------------------------------- */
 
-        if (match && match[1]) {
-            projectName = decodeURIComponent(match[1])
-                .trim()
-                .toLowerCase();
-        }
-    }
-} catch (error) {
-    console.error("URL ERROR:", error);
-}
+            const page =
+                document.getElementById("projectPage");
 
-    console.log(
-        "Project requested:",
-        projectName
-    );
 
+            if (!page) {
 
-    /* =========================================
-       FIND PROJECT
-    ========================================= */
+                console.error(
+                    "ERROR: #projectPage not found."
+                );
 
-    const project =
-        projects[projectName];
+                return;
 
+            }
 
-    /* =========================================
-       PROJECT NOT FOUND
-    ========================================= */
 
-    if (!project) {
+            /* -------------------------------------
+               GET PROJECT FROM URL
+            ------------------------------------- */
 
-        page.innerHTML = `
+            let projectName = "nexo";
 
-            <section class="project-detail">
+            const search =
+                window.location.search || "";
 
-                <div class="project-detail-header">
 
-                    <span class="project-category-detail">
-                        PROJECT NOT FOUND
-                    </span>
+            const match =
+                search.match(/[?&]project=([^&]+)/i);
 
-                    <h1>
-                        المشروع
-                        <span>
-                            غير موجود
-                        </span>
-                    </h1>
 
-                    <p class="project-description">
-                        عذرًا، لم يتم العثور على المشروع المطلوب.
-                    </p>
+            if (match && match[1]) {
 
-                    <a
-                        href="./index.html#projects"
-                        class="next-project"
-                    >
-                        العودة للمشاريع
-                    </a>
+                try {
 
-                </div>
+                    projectName =
+                        decodeURIComponent(match[1]);
 
-            </section>
+                } catch (decodeError) {
 
-        `;
+                    projectName = match[1];
 
-        return;
+                }
 
-    }
+                projectName =
+                    projectName
+                        .trim()
+                        .toLowerCase();
 
+            }
 
-    /* =========================================
-       DOCUMENT TITLE
-    ========================================= */
 
-    document.title =
-        project.title +
-        " " +
-        project.subtitle +
-        " | Marwa Hussin";
+            console.log(
+                "Requested project:",
+                projectName
+            );
 
 
-    /* =========================================
-       TECHNOLOGIES HTML
-    ========================================= */
+            /* -------------------------------------
+               FIND PROJECT
+            ------------------------------------- */
 
-    let technologiesHTML = "";
+            const project =
+                projects[projectName];
 
 
-    project.technologies.forEach(
-        function (technology) {
+            /* -------------------------------------
+               PROJECT NOT FOUND
+            ------------------------------------- */
 
-            technologiesHTML += `
-                <span>
-                    ${technology}
-                </span>
-            `;
+            if (!project) {
 
-        }
-    );
+                page.innerHTML = `
 
+                    <section class="project-detail">
 
-    /* =========================================
-       FEATURES HTML
-    ========================================= */
+                        <div class="project-detail-header">
 
-    let featuresHTML = "";
+                            <span class="project-category-detail">
+                                PROJECT NOT FOUND
+                            </span>
 
+                            <h1>
+                                المشروع
+                                <span>
+                                    غير موجود
+                                </span>
+                            </h1>
 
-    project.features.forEach(
-        function (feature) {
+                            <p class="project-description">
+                                عذرًا، لم يتم العثور على المشروع المطلوب.
+                            </p>
 
-            featuresHTML += `
+                            <a
+                                href="./index.html#projects"
+                                class="next-project"
+                            >
+                                العودة للمشاريع
+                            </a>
 
-                <div class="project-feature">
+                        </div>
 
-                    ${feature}
+                    </section>
 
-                </div>
+                `;
 
-            `;
+                return;
 
-        }
-    );
+            }
 
 
-    /* =========================================
-       DISPLAY PROJECT
-    ========================================= */
+            /* -------------------------------------
+               PAGE TITLE
+            ------------------------------------- */
 
-    page.innerHTML = `
+            document.title =
+                project.title +
+                " " +
+                project.subtitle +
+                " | Marwa Hussin";
 
-        <section class="project-detail">
 
+            /* -------------------------------------
+               TECHNOLOGIES
+            ------------------------------------- */
 
-            <!-- =================================
-                 HEADER
-            ================================== -->
+            let technologiesHTML = "";
 
-            <div class="project-detail-header">
 
-                <span class="project-category-detail">
+            if (
+                Array.isArray(project.technologies)
+            ) {
 
-                    ${project.category}
+                project.technologies.forEach(
+                    function (technology) {
 
-                </span>
+                        technologiesHTML += `
 
+                            <span>
+                                ${technology}
+                            </span>
 
-                <h1>
+                        `;
 
-                    ${project.title}
+                    }
+                );
 
-                    <span>
+            }
 
-                        ${project.subtitle}
 
-                    </span>
+            /* -------------------------------------
+               FEATURES
+            ------------------------------------- */
 
-                </h1>
+            let featuresHTML = "";
 
 
-                <p class="project-description">
+            if (
+                Array.isArray(project.features)
+            ) {
 
-                    ${project.description}
+                project.features.forEach(
+                    function (feature) {
 
-                </p>
+                        featuresHTML += `
 
-            </div>
+                            <div class="project-feature">
+                                ${feature}
+                            </div>
 
+                        `;
 
-            <!-- =================================
-                 VIDEO
-            ================================== -->
+                    }
+                );
 
-            <div class="project-video-wrapper">
+            }
 
-                <video
-                    class="project-main-video"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    webkit-playsinline
-                    controls
-                    preload="metadata"
-                >
 
-                    <source
-                        src="${project.video}"
-                        type="video/mp4"
-                    >
+            /* -------------------------------------
+               CREATE PROJECT HTML
+            ------------------------------------- */
 
-                    متصفحك لا يدعم تشغيل الفيديو.
+            page.innerHTML = `
 
-                </video>
+                <section class="project-detail">
 
-            </div>
 
+                    <!-- HEADER -->
 
-            <!-- =================================
-                 INFORMATION
-            ================================== -->
+                    <div class="project-detail-header">
 
-            <div class="project-info-grid">
+                        <span class="project-category-detail">
 
-
-                <!-- ABOUT -->
-
-                <div class="project-info-block">
-
-                    <div class="project-number">
-
-                        01 — PROJECT
-
-                    </div>
-
-
-                    <h2>
-
-                        عن المشروع
-
-                    </h2>
-
-
-                    <p>
-
-                        ${project.about}
-
-                    </p>
-
-                </div>
-
-
-                <!-- ROLE -->
-
-                <div class="project-info-block">
-
-                    <div class="project-number">
-
-                        02 — MY ROLE
-
-                    </div>
-
-
-                    <h2>
-
-                        دوري في المشروع
-
-                    </h2>
-
-
-                    <p>
-
-                        ${project.role}
-
-                    </p>
-
-                </div>
-
-
-                <!-- TECHNOLOGIES -->
-
-                <div class="project-info-block">
-
-                    <div class="project-number">
-
-                        03 — TECHNOLOGIES
-
-                    </div>
-
-
-                    <h2>
-
-                        التقنيات
-
-                    </h2>
-
-
-                    <div class="project-technologies">
-
-                        ${technologiesHTML}
-
-                    </div>
-
-                </div>
-
-
-                <!-- FEATURES -->
-
-                <div class="project-info-block">
-
-                    <div class="project-number">
-
-                        04 — FEATURES
-
-                    </div>
-
-
-                    <h2>
-
-                        المميزات
-
-                    </h2>
-
-
-                    <div class="project-features">
-
-                        ${featuresHTML}
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- =================================
-                 CONTACT
-            ================================== -->
-
-            <div class="project-bottom">
-
-
-                <div>
-
-                    <div class="project-number">
-
-                        HAVE A PROJECT?
-
-                    </div>
-
-
-                    <h2>
-
-                        مشروعك القادم؟
-
-                        <span>
-
-                            لنبدأ.
+                            ${project.category}
 
                         </span>
 
-                    </h2>
 
-                </div>
+                        <h1>
 
+                            ${project.title}
 
-                <a
-                    href="./index.html#contact"
-                    class="next-project"
-                >
+                            <span>
 
-                    تواصل معي
+                                ${project.subtitle}
 
-                    <span>
+                            </span>
 
-                        ↗
-
-                    </span>
-
-                </a>
+                        </h1>
 
 
-            </div>
+                        <p class="project-description">
+
+                            ${project.description}
+
+                        </p>
+
+                    </div>
 
 
-        </section>
+                    <!-- VIDEO -->
 
-    `;
+                    <div class="project-video-wrapper">
 
+                        <video
+                            class="project-main-video"
+                            muted
+                            loop
+                            playsinline
+                            webkit-playsinline
+                            controls
+                            preload="metadata"
+                        >
 
-    /* =========================================
-       VIDEO - SAFARI
-    ========================================= */
+                            <source
+                                src="${project.video}"
+                                type="video/mp4"
+                            >
 
-    const video =
-        page.querySelector(
-            ".project-main-video"
-        );
+                            متصفحك لا يدعم تشغيل الفيديو.
 
+                        </video>
 
-    if (video) {
-
-        video.muted = true;
-
-        video.defaultMuted = true;
-
-        video.playsInline = true;
-
-
-        if ("webkitPlaysInline" in video) {
-
-            video.webkitPlaysInline = true;
-
-        }
+                    </div>
 
 
-        /* محاولة تشغيل الفيديو */
+                    <!-- INFORMATION -->
 
-        const playPromise =
-            video.play();
+                    <div class="project-info-grid">
 
 
-        if (
-            playPromise &&
-            typeof playPromise.catch === "function"
-        ) {
+                        <!-- ABOUT -->
 
-            playPromise.catch(
-                function (error) {
+                        <div class="project-info-block">
+
+                            <div class="project-number">
+
+                                01 — PROJECT
+
+                            </div>
+
+
+                            <h2>
+
+                                عن المشروع
+
+                            </h2>
+
+
+                            <p>
+
+                                ${project.about}
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- ROLE -->
+
+                        <div class="project-info-block">
+
+                            <div class="project-number">
+
+                                02 — MY ROLE
+
+                            </div>
+
+
+                            <h2>
+
+                                دوري في المشروع
+
+                            </h2>
+
+
+                            <p>
+
+                                ${project.role}
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- TECHNOLOGIES -->
+
+                        <div class="project-info-block">
+
+                            <div class="project-number">
+
+                                03 — TECHNOLOGIES
+
+                            </div>
+
+
+                            <h2>
+
+                                التقنيات
+
+                            </h2>
+
+
+                            <div class="project-technologies">
+
+                                ${technologiesHTML}
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEATURES -->
+
+                        <div class="project-info-block">
+
+                            <div class="project-number">
+
+                                04 — FEATURES
+
+                            </div>
+
+
+                            <h2>
+
+                                المميزات
+
+                            </h2>
+
+
+                            <div class="project-features">
+
+                                ${featuresHTML}
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- CONTACT -->
+
+                    <div class="project-bottom">
+
+
+                        <div>
+
+                            <div class="project-number">
+
+                                HAVE A PROJECT?
+
+                            </div>
+
+
+                            <h2>
+
+                                مشروعك القادم؟
+
+                                <span>
+
+                                    لنبدأ.
+
+                                </span>
+
+                            </h2>
+
+                        </div>
+
+
+                        <a
+                            href="./index.html#contact"
+                            class="next-project"
+                        >
+
+                            تواصل معي
+
+                            <span>
+
+                                ↗
+
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+
+                </section>
+
+            `;
+
+
+            /* -------------------------------------
+               GET VIDEO
+            ------------------------------------- */
+
+            const video =
+                page.querySelector(
+                    ".project-main-video"
+                );
+
+
+            if (video) {
+
+                /* Safari settings */
+
+                video.muted = true;
+
+                video.defaultMuted = true;
+
+                video.playsInline = true;
+
+
+                /* WebKit / Safari */
+
+                try {
+
+                    video.setAttribute(
+                        "playsinline",
+                        ""
+                    );
+
+                    video.setAttribute(
+                        "webkit-playsinline",
+                        ""
+                    );
+
+                    video.setAttribute(
+                        "muted",
+                        ""
+                    );
+
+                } catch (attributeError) {
 
                     console.log(
-                        "Autoplay prevented:",
-                        error
+                        "Video attribute warning:",
+                        attributeError
                     );
 
                 }
+
+
+                /* --------------------------------
+                   TRY AUTOPLAY
+                -------------------------------- */
+
+                try {
+
+                    const playPromise =
+                        video.play();
+
+
+                    if (
+                        playPromise &&
+                        typeof playPromise.then === "function"
+                    ) {
+
+                        playPromise.catch(
+                            function (error) {
+
+                                console.log(
+                                    "Autoplay prevented:",
+                                    error
+                                );
+
+                            }
+                        );
+
+                    }
+
+                } catch (playError) {
+
+                    console.log(
+                        "Video autoplay error:",
+                        playError
+                    );
+
+                }
+
+            }
+
+
+            /* -------------------------------------
+               FINISHED
+            ------------------------------------- */
+
+            console.log(
+                "PROJECT LOADED SUCCESSFULLY:",
+                projectName
             );
+
+
+        } catch (error) {
+
+            /* -------------------------------------
+               SAFETY ERROR
+            ------------------------------------- */
+
+            console.error(
+                "PROJECT JS ERROR:",
+                error
+            );
+
+
+            const page =
+                document.getElementById(
+                    "projectPage"
+                );
+
+
+            if (page) {
+
+                page.innerHTML = `
+
+                    <section class="project-detail">
+
+                        <div class="project-detail-header">
+
+                            <span class="project-category-detail">
+                                ERROR
+                            </span>
+
+                            <h1>
+                                حدث خطأ
+                                <span>
+                                    أثناء تحميل المشروع
+                                </span>
+                            </h1>
+
+                            <p class="project-description">
+                                يرجى تحديث الصفحة والمحاولة مرة أخرى.
+                            </p>
+
+                            <a
+                                href="./index.html#projects"
+                                class="next-project"
+                            >
+                                العودة للمشاريع
+                            </a>
+
+                        </div>
+
+                    </section>
+
+                `;
+
+            }
 
         }
 
@@ -605,7 +756,27 @@ try {
 
 
     /* =========================================
-       SAFARI PAGE SHOW
+       START
+    ========================================= */
+
+    if (
+        document.readyState === "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadProject
+        );
+
+    } else {
+
+        loadProject();
+
+    }
+
+
+    /* =========================================
+       SAFARI BFCACHE
     ========================================= */
 
     window.addEventListener(
@@ -613,21 +784,10 @@ try {
         function () {
 
             console.log(
-                "Safari pageshow:",
-                projectName
+                "Page restored successfully."
             );
 
         }
     );
 
-
-    /* =========================================
-       FINISHED
-    ========================================= */
-
-    console.log(
-        "PROJECT LOADED SUCCESSFULLY:",
-        projectName
-    );
-
-});
+})();
