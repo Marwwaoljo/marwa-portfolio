@@ -813,7 +813,7 @@ body {
     width: 100%;
     height: auto;
     min-height: 1px;
-    display: block;
+    display: block !important;
     object-fit: contain;
     background: #090909;
 }
@@ -866,7 +866,7 @@ body {
     .project-main-video {
         width: 100%;
         height: auto;
-        display: block;
+        display: block !important;
         object-fit: contain;
     }
 }
