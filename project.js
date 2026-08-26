@@ -143,21 +143,17 @@ const projects = {
 /* =========================================
    GET PROJECT FROM URL
 ========================================= */
+const params = new URLSearchParams(window.location.search);
 
-const params = new URLSearchParams(
-    window.location.search
-);
+const projectName = params.get("project") || "nexo";
 
-const projectName =
-    params.get("project") || "nexo";
+const project = projects[projectName];
 
-const project =
-    projects[projectName];
+const page = document.getElementById("projectPage");
 
-const page =
-    document.getElementById("projectPage");
-
-
+if (!page) {
+    console.error("لم يتم العثور على projectPage");
+}
 /* =========================================
    PROJECT NOT FOUND
 ========================================= */
