@@ -1,4 +1,9 @@
 console.log("PROJECT JS WORKING");
+
+/* =========================================
+   PROJECT DATA
+========================================= */
+
 const projects = {
 
     nexo: {
@@ -142,76 +147,123 @@ const projects = {
 
 
 /* =========================================
-   GET PROJECT FROM URL
-========================================= */
-const params = new URLSearchParams(window.location.search);
-
-const projectName = params.get("project") || "nexo";
-
-const project = projects[projectName];
-
-const page = document.getElementById("projectPage");
-
-if (!page) {
-    console.error("لم يتم العثور على projectPage");
-}
-/* =========================================
-   PROJECT NOT FOUND
+   LOAD PROJECT
 ========================================= */
 
-if (!project) {
+function loadProject() {
 
-    page.innerHTML = `
+    const page = document.getElementById("projectPage");
 
-        <section class="project-detail">
+    if (!page) {
 
-            <div class="project-detail-header">
+        console.error(
+            "ERROR: #projectPage غير موجود في HTML"
+        );
 
-                <span class="project-category-detail">
-                    PROJECT NOT FOUND
-                </span>
-
-                <h1>
-                    المشروع
-                    <span>غير موجود</span>
-                </h1>
-
-                <p class="project-description">
-                    عذرًا، لم يتم العثور على المشروع المطلوب.
-                </p>
-
-                <a
-                    href="index.html#projects"
-                    class="next-project"
-                >
-                    العودة للمشاريع
-                </a>
-
-            </div>
-
-        </section>
-
-    `;
-
-}
+        return;
+    }
 
 
-/* =========================================
-   DISPLAY PROJECT
-========================================= */
+    /* الحصول على اسم المشروع */
 
-else {
+    const params = new URLSearchParams(
+        window.location.search
+    );
+
+    let projectName =
+        params.get("project");
+
+
+    /* إذا لم يوجد اسم مشروع */
+
+    if (!projectName) {
+        projectName = "nexo";
+    }
+
+
+    /* إزالة أي مسافات */
+
+    projectName =
+        projectName.trim().toLowerCase();
+
+
+    console.log(
+        "Project requested:",
+        projectName
+    );
+
+
+    /* الحصول على بيانات المشروع */
+
+    const project =
+        projects[projectName];
+
+
+    /* =========================================
+       PROJECT NOT FOUND
+    ========================================= */
+
+    if (!project) {
+
+        page.innerHTML = `
+
+            <section class="project-detail">
+
+                <div class="project-detail-header">
+
+                    <span class="project-category-detail">
+                        PROJECT NOT FOUND
+                    </span>
+
+                    <h1>
+                        المشروع
+                        <span>غير موجود</span>
+                    </h1>
+
+                    <p class="project-description">
+                        عذرًا، لم يتم العثور على المشروع المطلوب.
+                    </p>
+
+                    <a
+                        href="index.html#projects"
+                        class="next-project"
+                    >
+                        العودة للمشاريع
+                    </a>
+
+                </div>
+
+            </section>
+
+        `;
+
+        return;
+    }
+
+
+    /* =========================================
+       PAGE TITLE
+    ========================================= */
 
     document.title =
-        `${project.title} ${project.subtitle} | Marwa Hussin`;
+        project.title +
+        " " +
+        project.subtitle +
+        " | Marwa Hussin";
 
+
+    /* =========================================
+       PROJECT HTML
+    ========================================= */
 
     page.innerHTML = `
 
         <section class="project-detail">
 
 
-            <!-- HEADER -->
+            <!-- ===============================
+                 HEADER
+            ================================ -->
 
             <div class="project-detail-header">
 
@@ -236,7 +288,9 @@ else {
             </div>
 
 
-            <!-- VIDEO -->
+            <!-- ===============================
+                 VIDEO
+            ================================ -->
 
             <div class="project-video-wrapper">
 
@@ -246,7 +300,7 @@ else {
                     muted
                     loop
                     playsinline
-                    controls
+                    webkit-playsinline
                     preload="metadata"
                 >
 
@@ -262,7 +316,9 @@ else {
             </div>
 
 
-            <!-- INFO -->
+            <!-- ===============================
+                 INFORMATION
+            ================================ -->
 
             <div class="project-info-grid">
 
@@ -320,12 +376,16 @@ else {
                     <div class="project-technologies">
 
                         ${project.technologies
-                            .map(
-                                tech =>
-                                    `<span>${tech}</span>`
-                            )
-                            .join("")
-                        }
+                            .map(function (tech) {
+
+                                return `
+                                    <span>
+                                        ${tech}
+                                    </span>
+                                `;
+
+                            })
+                            .join("")}
 
                     </div>
 
@@ -347,25 +407,28 @@ else {
                     <div class="project-features">
 
                         ${project.features
-                            .map(
-                                feature =>
-                                    `
+                            .map(function (feature) {
+
+                                return `
                                     <div class="project-feature">
                                         ${feature}
                                     </div>
-                                    `
-                            )
-                            .join("")
-                        }
+                                `;
+
+                            })
+                            .join("")}
 
                     </div>
 
                 </div>
 
+
             </div>
 
 
-            <!-- CONTACT -->
+            <!-- ===============================
+                 CONTACT
+            ================================ -->
 
             <div class="project-bottom">
 
@@ -407,5 +470,86 @@ else {
         </section>
 
     `;
+
+
+    console.log(
+        "Project loaded successfully:",
+        projectName
+    );
+
+
+    /* =========================================
+       VIDEO SAFARI
+    ========================================= */
+
+    const video =
+        page.querySelector(".project-main-video");
+
+
+    if (video) {
+
+        video.muted = true;
+        video.playsInline = true;
+
+
+        const playVideo = function () {
+
+            const promise =
+                video.play();
+
+
+            if (
+                promise !== undefined &&
+                promise.catch
+            ) {
+
+                promise.catch(function () {
+
+                    console.log(
+                        "Safari prevented autoplay"
+                    );
+
+                });
+
+            }
+
+        };
+
+
+        video.addEventListener(
+            "loadedmetadata",
+            playVideo,
+            { once: true }
+        );
+
+
+        video.addEventListener(
+            "canplay",
+            playVideo,
+            { once: true }
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+if (
+    document.readyState === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        loadProject,
+        { once: true }
+    );
+
+} else {
+
+    loadProject();
 
 }
