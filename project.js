@@ -2,13 +2,11 @@
    PROJECT JS
    Safari Safe Version
 ========================================= */
-alert("PROJECT JS WORKING");
-console.log("PROJECT JS WORKING");
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("PROJECT JS WORKING");
-
-
+   alert("PROJECT JS WORKING");
+console.log("PROJECT JS WORKING");
     /* =========================================
        PROJECTS DATA
     ========================================= */
