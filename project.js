@@ -1,3 +1,4 @@
+console.log("PROJECT JS WORKING");
 const projects = {
 
     nexo: {
