@@ -1,199 +1,225 @@
-console.log("PROJECT JS WORKING");
-
 /* =========================================
-   PROJECT DATA
+   PROJECT JS
+   Safari Safe Version
 ========================================= */
 
-const projects = {
+document.addEventListener("DOMContentLoaded", function () {
 
-    nexo: {
-        category: "E-COMMERCE",
-        title: "NEXO",
-        subtitle: "Mobile Store",
-
-        video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762153/nexo_qcud5t.mp4",
-
-        description:
-            "متجر إلكتروني عصري لبيع الأجهزة والهواتف بتجربة مستخدم حديثة وتصميم متجاوب.",
-
-        about:
-            "NEXO هو متجر إلكتروني متخصص في الأجهزة والهواتف، تم تصميمه بأسلوب عصري يركز على إبراز المنتجات وتسهيل عملية التصفح والشراء.",
-
-        role:
-            "تصميم وتطوير الواجهة الأمامية، بناء تجربة المستخدم، تنظيم المنتجات وإضافة العناصر التفاعلية وتجهيز التصميم للجوال.",
-
-        technologies: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Firebase",
-            "Responsive Design"
-        ],
-
-        features: [
-            "تصميم متجاوب",
-            "صفحة منتجات",
-            "سلة مشتريات",
-            "قائمة مفضلة",
-            "فلترة المنتجات",
-            "ترتيب المنتجات"
-        ]
-    },
+    console.log("PROJECT JS WORKING");
 
 
-    roqan: {
-        category: "COFFEE BRAND",
-        title: "Roqan",
-        subtitle: "Coffee",
+    /* =========================================
+       PROJECTS DATA
+    ========================================= */
 
-        video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762155/roqan_vycy0r.mp4",
+    const projects = {
 
-        description:
-            "تجربة رقمية سينمائية لعلامة قهوة فاخرة تجمع بين الهوية السعودية والتصميم العصري.",
+        nexo: {
+            category: "E-COMMERCE",
+            title: "NEXO",
+            subtitle: "Mobile Store",
 
-        about:
-            "تم تصميم الموقع بأسلوب بصري فاخر يعتمد على الألوان الداكنة والإضاءة الدافئة والحركة لإيصال شخصية العلامة التجارية.",
+            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762153/nexo_qcud5t.mp4",
 
-        role:
-            "تصميم وتطوير الواجهة، بناء التجربة البصرية، إضافة الحركات والتفاعلات وتجهيز التصميم لمختلف الشاشات.",
+            description:
+                "متجر إلكتروني عصري لبيع الأجهزة والهواتف بتجربة مستخدم حديثة وتصميم متجاوب.",
 
-        technologies: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Animation",
-            "Responsive Design"
-        ],
+            about:
+                "NEXO هو متجر إلكتروني متخصص في الأجهزة والهواتف، تم تصميمه بأسلوب عصري يركز على إبراز المنتجات وتسهيل عملية التصفح والشراء.",
 
-        features: [
-            "Hero سينمائي",
-            "حركات انتقالية",
-            "تصميم فاخر",
-            "تجربة تفاعلية",
-            "تصميم متجاوب"
-        ]
-    },
+            role:
+                "تصميم وتطوير الواجهة الأمامية، بناء تجربة المستخدم، تنظيم المنتجات وإضافة العناصر التفاعلية وتجهيز التصميم للجوال.",
 
+            technologies: [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Firebase",
+                "Responsive Design"
+            ],
 
-    burger: {
-        category: "RESTAURANT",
-        title: "Hero",
-        subtitle: "Burger",
-
-        video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762150/burger_txskf0.mp4",
-
-        description:
-            "موقع مطعم تفاعلي بتجربة بصرية جذابة يركز على إبراز المنتجات وتشجيع المستخدم على الطلب.",
-
-        about:
-            "تم تصميم الموقع ليقدم تجربة ممتعة منذ اللحظة الأولى، مع التركيز على الصور والحركة وسهولة الوصول إلى المنتجات.",
-
-        role:
-            "تصميم وتطوير الواجهة، بناء أقسام المنتجات، إضافة الحركات والتفاعلات وتجهيز الموقع للجوال.",
-
-        technologies: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Animation",
-            "Responsive Design"
-        ],
-
-        features: [
-            "Hero تفاعلي",
-            "عرض المنتجات",
-            "Animations",
-            "تصميم للجوال",
-            "واجهة سهلة الاستخدام"
-        ]
-    },
+            features: [
+                "تصميم متجاوب",
+                "صفحة منتجات",
+                "سلة مشتريات",
+                "قائمة مفضلة",
+                "فلترة المنتجات",
+                "ترتيب المنتجات"
+            ]
+        },
 
 
-    abaya: {
-        category: "FASHION E-COMMERCE",
-        title: "rahil",
-        subtitle: "Abaya",
+        roqan: {
+            category: "COFFEE BRAND",
+            title: "Roqan",
+            subtitle: "Coffee",
 
-        video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762411/abaya_vkzcuw.mp4",
+            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762155/roqan_vycy0r.mp4",
 
-        description:
-            "تجربة متجر إلكتروني لعلامة أزياء خليجية فاخرة تجمع بين البساطة والفخامة.",
+            description:
+                "تجربة رقمية سينمائية لعلامة قهوة فاخرة تجمع بين الهوية السعودية والتصميم العصري.",
 
-        about:
-            "تم تصميم التجربة لتعكس الفخامة والبساطة، مع إبراز تفاصيل المنتجات وتسهيل عملية تصفح العبايات.",
+            about:
+                "تم تصميم الموقع بأسلوب بصري فاخر يعتمد على الألوان الداكنة والإضاءة الدافئة والحركة لإيصال شخصية العلامة التجارية.",
 
-        role:
-            "تصميم الواجهة، تجربة المستخدم، صفحات المنتجات، التفاعلات وتجهيز الموقع لمختلف الشاشات.",
+            role:
+                "تصميم وتطوير الواجهة، بناء التجربة البصرية، إضافة الحركات والتفاعلات وتجهيز التصميم لمختلف الشاشات.",
 
-        technologies: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "E-Commerce",
-            "Responsive Design"
-        ],
+            technologies: [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Animation",
+                "Responsive Design"
+            ],
 
-        features: [
-            "صفحة منتجات",
-            "صور متعددة",
-            "Wishlist",
-            "Cart",
-            "فلترة المنتجات",
-            "تصميم متجاوب"
-        ]
-    }
-
-};
+            features: [
+                "Hero سينمائي",
+                "حركات انتقالية",
+                "تصميم فاخر",
+                "تجربة تفاعلية",
+                "تصميم متجاوب"
+            ]
+        },
 
 
-/* =========================================
-   LOAD PROJECT
-========================================= */
+        burger: {
+            category: "RESTAURANT",
+            title: "Hero",
+            subtitle: "Burger",
 
-function loadProject() {
+            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762150/burger_txskf0.mp4",
 
-    const page = document.getElementById("projectPage");
+            description:
+                "موقع مطعم تفاعلي بتجربة بصرية جذابة يركز على إبراز المنتجات وتشجيع المستخدم على الطلب.",
+
+            about:
+                "تم تصميم الموقع ليقدم تجربة ممتعة منذ اللحظة الأولى، مع التركيز على الصور والحركة وسهولة الوصول إلى المنتجات.",
+
+            role:
+                "تصميم وتطوير الواجهة، بناء أقسام المنتجات، إضافة الحركات والتفاعلات وتجهيز الموقع للجوال.",
+
+            technologies: [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Animation",
+                "Responsive Design"
+            ],
+
+            features: [
+                "Hero تفاعلي",
+                "عرض المنتجات",
+                "Animations",
+                "تصميم للجوال",
+                "واجهة سهلة الاستخدام"
+            ]
+        },
+
+
+        abaya: {
+            category: "FASHION E-COMMERCE",
+            title: "rahil",
+            subtitle: "Abaya",
+
+            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762411/abaya_vkzcuw.mp4",
+
+            description:
+                "تجربة متجر إلكتروني لعلامة أزياء خليجية فاخرة تجمع بين البساطة والفخامة.",
+
+            about:
+                "تم تصميم التجربة لتعكس الفخامة والبساطة، مع إبراز تفاصيل المنتجات وتسهيل عملية تصفح العبايات.",
+
+            role:
+                "تصميم الواجهة، تجربة المستخدم، صفحات المنتجات، التفاعلات وتجهيز الموقع لمختلف الشاشات.",
+
+            technologies: [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "E-Commerce",
+                "Responsive Design"
+            ],
+
+            features: [
+                "صفحة منتجات",
+                "صور متعددة",
+                "Wishlist",
+                "Cart",
+                "فلترة المنتجات",
+                "تصميم متجاوب"
+            ]
+        }
+
+    };
+
+
+    /* =========================================
+       GET PROJECT PAGE
+    ========================================= */
+
+    const page =
+        document.getElementById("projectPage");
+
 
     if (!page) {
 
-        alert(
-            "ERROR: #projectPage غير موجود في HTML"
+        console.error(
+            "ERROR: projectPage not found"
         );
 
         return;
+
     }
 
 
-    /* الحصول على اسم المشروع */
+    /* =========================================
+       GET PROJECT NAME
+    ========================================= */
 
-    const params = new URLSearchParams(
-        window.location.search
-    );
-
-    let projectName =
-        params.get("project");
+    let projectName = "nexo";
 
 
-    /* إذا لم يوجد اسم مشروع */
+    try {
 
-    if (!projectName) {
-        projectName = "nexo";
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const selectedProject =
+            params.get("project");
+
+
+        if (selectedProject) {
+
+            projectName =
+                selectedProject
+                    .trim()
+                    .toLowerCase();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "URL ERROR:",
+            error
+        );
+
     }
 
 
-    /* إزالة أي مسافات */
-
-    projectName =
-        projectName.trim().toLowerCase();
-
-
-       console.log(
+    console.log(
         "Project requested:",
         projectName
     );
 
 
-    /* الحصول على بيانات المشروع */
+    /* =========================================
+       FIND PROJECT
+    ========================================= */
 
     const project =
         projects[projectName];
@@ -217,7 +243,9 @@ function loadProject() {
 
                     <h1>
                         المشروع
-                        <span>غير موجود</span>
+                        <span>
+                            غير موجود
+                        </span>
                     </h1>
 
                     <p class="project-description">
@@ -225,7 +253,7 @@ function loadProject() {
                     </p>
 
                     <a
-                        href="index.html#projects"
+                        href="./index.html#projects"
                         class="next-project"
                     >
                         العودة للمشاريع
@@ -238,11 +266,12 @@ function loadProject() {
         `;
 
         return;
+
     }
 
 
     /* =========================================
-       PAGE TITLE
+       DOCUMENT TITLE
     ========================================= */
 
     document.title =
@@ -253,7 +282,51 @@ function loadProject() {
 
 
     /* =========================================
-       PROJECT HTML
+       TECHNOLOGIES HTML
+    ========================================= */
+
+    let technologiesHTML = "";
+
+
+    project.technologies.forEach(
+        function (technology) {
+
+            technologiesHTML += `
+                <span>
+                    ${technology}
+                </span>
+            `;
+
+        }
+    );
+
+
+    /* =========================================
+       FEATURES HTML
+    ========================================= */
+
+    let featuresHTML = "";
+
+
+    project.features.forEach(
+        function (feature) {
+
+            featuresHTML += `
+
+                <div class="project-feature">
+
+                    ${feature}
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    /* =========================================
+       DISPLAY PROJECT
     ========================================= */
 
     page.innerHTML = `
@@ -261,36 +334,44 @@ function loadProject() {
         <section class="project-detail">
 
 
-            <!-- ===============================
+            <!-- =================================
                  HEADER
-            ================================ -->
+            ================================== -->
 
             <div class="project-detail-header">
 
                 <span class="project-category-detail">
+
                     ${project.category}
+
                 </span>
+
 
                 <h1>
 
                     ${project.title}
 
                     <span>
+
                         ${project.subtitle}
+
                     </span>
 
                 </h1>
 
+
                 <p class="project-description">
+
                     ${project.description}
+
                 </p>
 
             </div>
 
 
-            <!-- ===============================
+            <!-- =================================
                  VIDEO
-            ================================ -->
+            ================================== -->
 
             <div class="project-video-wrapper">
 
@@ -301,6 +382,7 @@ function loadProject() {
                     loop
                     playsinline
                     webkit-playsinline
+                    controls
                     preload="metadata"
                 >
 
@@ -316,9 +398,9 @@ function loadProject() {
             </div>
 
 
-            <!-- ===============================
+            <!-- =================================
                  INFORMATION
-            ================================ -->
+            ================================== -->
 
             <div class="project-info-grid">
 
@@ -328,15 +410,23 @@ function loadProject() {
                 <div class="project-info-block">
 
                     <div class="project-number">
+
                         01 — PROJECT
+
                     </div>
 
+
                     <h2>
+
                         عن المشروع
+
                     </h2>
 
+
                     <p>
+
                         ${project.about}
+
                     </p>
 
                 </div>
@@ -347,15 +437,23 @@ function loadProject() {
                 <div class="project-info-block">
 
                     <div class="project-number">
+
                         02 — MY ROLE
+
                     </div>
 
+
                     <h2>
+
                         دوري في المشروع
+
                     </h2>
 
+
                     <p>
+
                         ${project.role}
+
                     </p>
 
                 </div>
@@ -366,26 +464,22 @@ function loadProject() {
                 <div class="project-info-block">
 
                     <div class="project-number">
+
                         03 — TECHNOLOGIES
+
                     </div>
 
+
                     <h2>
+
                         التقنيات
+
                     </h2>
+
 
                     <div class="project-technologies">
 
-                        ${project.technologies
-                            .map(function (tech) {
-
-                                return `
-                                    <span>
-                                        ${tech}
-                                    </span>
-                                `;
-
-                            })
-                            .join("")}
+                        ${technologiesHTML}
 
                     </div>
 
@@ -397,26 +491,22 @@ function loadProject() {
                 <div class="project-info-block">
 
                     <div class="project-number">
+
                         04 — FEATURES
+
                     </div>
 
+
                     <h2>
+
                         المميزات
+
                     </h2>
+
 
                     <div class="project-features">
 
-                        ${project.features
-                            .map(function (feature) {
-
-                                return `
-                                    <div class="project-feature">
-                                        ${feature}
-                                    </div>
-                                `;
-
-                            })
-                            .join("")}
+                        ${featuresHTML}
 
                     </div>
 
@@ -426,24 +516,30 @@ function loadProject() {
             </div>
 
 
-            <!-- ===============================
+            <!-- =================================
                  CONTACT
-            ================================ -->
+            ================================== -->
 
             <div class="project-bottom">
+
 
                 <div>
 
                     <div class="project-number">
+
                         HAVE A PROJECT?
+
                     </div>
+
 
                     <h2>
 
                         مشروعك القادم؟
 
                         <span>
+
                             لنبدأ.
+
                         </span>
 
                     </h2>
@@ -452,17 +548,20 @@ function loadProject() {
 
 
                 <a
-                    href="index.html#contact"
+                    href="./index.html#contact"
                     class="next-project"
                 >
 
                     تواصل معي
 
                     <span>
+
                         ↗
+
                     </span>
 
                 </a>
+
 
             </div>
 
@@ -472,84 +571,83 @@ function loadProject() {
     `;
 
 
-    console.log(
-        "Project loaded successfully:",
-        projectName
-    );
-
-
     /* =========================================
-       VIDEO SAFARI
+       VIDEO - SAFARI
     ========================================= */
 
     const video =
-        page.querySelector(".project-main-video");
+        page.querySelector(
+            ".project-main-video"
+        );
 
 
     if (video) {
 
         video.muted = true;
+
+        video.defaultMuted = true;
+
         video.playsInline = true;
 
 
-        const playVideo = function () {
+        if ("webkitPlaysInline" in video) {
 
-            const promise =
-                video.play();
+            video.webkitPlaysInline = true;
+
+        }
 
 
-            if (
-                promise !== undefined &&
-                promise.catch
-            ) {
+        /* محاولة تشغيل الفيديو */
 
-                promise.catch(function () {
+        const playPromise =
+            video.play();
+
+
+        if (
+            playPromise &&
+            typeof playPromise.catch === "function"
+        ) {
+
+            playPromise.catch(
+                function (error) {
 
                     console.log(
-                        "Safari prevented autoplay"
+                        "Autoplay prevented:",
+                        error
                     );
 
-                });
+                }
+            );
 
-            }
-
-        };
-
-
-        video.addEventListener(
-            "loadedmetadata",
-            playVideo,
-            { once: true }
-        );
-
-
-        video.addEventListener(
-            "canplay",
-            playVideo,
-            { once: true }
-        );
+        }
 
     }
 
-}
 
+    /* =========================================
+       SAFARI PAGE SHOW
+    ========================================= */
 
-/* =========================================
-   START
-========================================= */
+    window.addEventListener(
+        "pageshow",
+        function () {
 
-if (
-    document.readyState === "loading"
-) {
+            console.log(
+                "Safari pageshow:",
+                projectName
+            );
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        loadProject,
-        { once: true }
+        }
     );
 
-} else {
 
-    loadProject();
+    /* =========================================
+       FINISHED
+    ========================================= */
 
-}
+    console.log(
+        "PROJECT LOADED SUCCESSFULLY:",
+        projectName
+    );
+
+});
