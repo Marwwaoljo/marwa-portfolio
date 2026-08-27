@@ -178,26 +178,14 @@
         ========================================= */
 
         var projectName = "nexo";
-
-        try {
-
-            var search = window.location.search || "";
-
-            var match = search.match(/[?&]project=([^&]+)/i);
-
-            if (match && match[1]) {
-
-                projectName = decodeURIComponent(match[1])
-                    .trim()
-                    .toLowerCase();
-
-            }
-
-        } catch (error) {
-
-            console.warn("URL ERROR:", error);
-
-        }
+try {
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("project")) {
+        projectName = urlParams.get("project").trim().toLowerCase();
+    }
+} catch (error) {
+    console.error("PROJECT URL ERROR:", error);
+}
 
 
         console.log("PROJECT:", projectName);
