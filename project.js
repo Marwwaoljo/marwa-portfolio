@@ -10,7 +10,6 @@
    START APPLICATION
 ========================================= */
 
-(function () {
 
     function initProjectPage() {
 
@@ -210,64 +209,19 @@
            GET PROJECT NAME
            Safari Safe
         ========================================= */
+/* =========================================
+   GET PROJECT NAME (Safari Safe)
+========================================= */
+var projectName = "nexo";
 
-        var projectName = "nexo";
-
-
-        try {
-
-            var search =
-                window.location.search || "";
-
-
-            console.log(
-                "URL:",
-                window.location.href
-            );
-
-
-            console.log(
-                "SEARCH:",
-                search
-            );
-
-
-            if (search.length > 0) {
-
-                var match =
-                    search.match(
-                        /[?&]project=([^&]+)/i
-                    );
-
-
-                if (match && match[1]) {
-
-                    projectName =
-                        decodeURIComponent(
-                            match[1]
-                        )
-                        .trim()
-                        .toLowerCase();
-
-                }
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "PROJECT URL ERROR:",
-                error
-            );
-
-        }
-
-
-        console.log(
-            "PROJECT REQUESTED:",
-            projectName
-        );
-
+try {
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("project")) {
+        projectName = urlParams.get("project").trim().toLowerCase();
+    }
+} catch (error) {
+    console.error("PROJECT URL ERROR:", error);
+}
 
         /* =========================================
            FIND PROJECT
@@ -332,13 +286,6 @@
             return;
 
         }
-
-
-        console.log(
-            "PROJECT FOUND:",
-            project.title
-        );
-
 
         /* =========================================
            DOCUMENT TITLE
@@ -916,5 +863,3 @@
         initProjectPage();
 
     }
-
-})();
