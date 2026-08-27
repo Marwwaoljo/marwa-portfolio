@@ -1740,3 +1740,10 @@ footer {
     color: var(--gold-light);
     transform: translate(-3px, -3px);
 }
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
