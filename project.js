@@ -716,50 +716,38 @@ try {
             }
         );
 
+/* =========================================
+   AUTOPLAY — SAFARI + CHROME
+========================================= */
 
-        /* =========================================
-           AUTOPLAY
-        ========================================= */
+try {
 
-        try {
+    var playPromise = video.play();
 
-            var playPromise =
-                video.play();
+    if (
+        playPromise &&
+        typeof playPromise.catch === "function"
+    ) {
 
-
-            if (
-                playPromise &&
-                typeof playPromise.then === "function"
-            ) {
-
-                playPromise
-                    .then(function () {
-
-                        console.log(
-                            "VIDEO PLAYING"
-                        );
-
-                    })
-                    .catch(function (error) {
-
-                        console.warn(
-                            "AUTOPLAY BLOCKED:",
-                            error
-                        );
-
-                    });
-
-            }
-
-        } catch (error) {
+        playPromise.catch(function (error) {
 
             console.warn(
-                "VIDEO PLAY ERROR:",
+                "Autoplay blocked:",
                 error
             );
 
-        }
+        });
 
+    }
+
+} catch (error) {
+
+    console.warn(
+        "Video play error:",
+        error
+    );
+
+}
         /* =========================================
            FINISHED
         ========================================= */
