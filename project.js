@@ -615,7 +615,7 @@ try {
 
         if (!video) {
 
-            alert(
+            console.warn(
                 "VIDEO NOT FOUND"
             );
 
