@@ -4,7 +4,6 @@
 ========================================= */
 
 "use strict";
-alert("PROJECT.JS LOADED");
 
 /* =========================================
    START APPLICATION
@@ -13,7 +12,7 @@ alert("PROJECT.JS LOADED");
 
     function initProjectPage() {
 
-        alert("INIT PROJECT PAGE");
+        console.log("PROJECT JS STARTED");
 
 
         /* =========================================
@@ -188,7 +187,7 @@ alert("PROJECT.JS LOADED");
 
         var page =
             document.getElementById("projectPage");
-       alert("PROJECT PAGE:", page);
+
 
         if (!page) {
 
@@ -232,8 +231,7 @@ try {
         var project =
             projects[projectName];
 
-        alert("PROJECT NAME:", projectName);
-          alert("PROJECT DATA:", project);
+
         /* =========================================
            PROJECT NOT FOUND
         ========================================= */
