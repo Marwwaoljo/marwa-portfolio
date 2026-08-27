@@ -217,7 +217,7 @@ var urlParams = new URLSearchParams(window.location.search);
 
 if (urlParams.has("project")) {
     projectName = urlParams.get("project").toLowerCase().trim();
-}
+
 }
 
         /* =========================================
