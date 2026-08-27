@@ -899,7 +899,7 @@ button {
 }
 
 .project-image {
-    aspect-ratio: 1.45;
+    
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.06);
@@ -1703,6 +1703,7 @@ footer {
     object-fit: contain;
     background: #090909;
     transition: transform 0.7s ease;
+    pointer-events: none; /* يمنع ظهور زر التشغيل عند اللمس */
 }
 
 
