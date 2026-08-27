@@ -1,11 +1,117 @@
 /* =========================================
-   PROJECT JS
-   Safari + Chrome Safe
+   PROJECT JS - SAFARI DIAGNOSTIC VERSION
 ========================================= */
 
 "use strict";
 
-(function () {
+
+/* =========================================
+   DIAGNOSTIC BOX
+========================================= */
+
+function showDiagnostic(message, type) {
+
+    var box = document.getElementById("safariDiagnostic");
+
+    if (!box) {
+
+        box = document.createElement("div");
+
+        box.id = "safariDiagnostic";
+
+        box.style.position = "fixed";
+        box.style.top = "15px";
+        box.style.left = "15px";
+        box.style.right = "15px";
+        box.style.zIndex = "999999";
+        box.style.background = "#111";
+        box.style.color = "#fff";
+        box.style.padding = "18px";
+        box.style.borderRadius = "12px";
+        box.style.fontFamily = "Arial, sans-serif";
+        box.style.fontSize = "14px";
+        box.style.lineHeight = "1.7";
+        box.style.direction = "ltr";
+        box.style.textAlign = "left";
+        box.style.boxShadow = "0 10px 40px rgba(0,0,0,.4)";
+        box.style.maxHeight = "70vh";
+        box.style.overflow = "auto";
+
+        document.body.appendChild(box);
+    }
+
+
+    var line = document.createElement("div");
+
+    line.style.padding = "4px 0";
+    line.style.borderBottom = "1px solid rgba(255,255,255,.1)";
+
+    if (type === "error") {
+
+        line.style.color = "#ff6b6b";
+
+    } else if (type === "success") {
+
+        line.style.color = "#7cff9b";
+
+    } else {
+
+        line.style.color = "#ffffff";
+
+    }
+
+    line.textContent = message;
+
+    box.appendChild(line);
+}
+
+
+/* =========================================
+   GLOBAL ERROR
+========================================= */
+
+window.onerror = function (
+    message,
+    source,
+    lineno,
+    colno
+) {
+
+    showDiagnostic(
+        "❌ JAVASCRIPT ERROR: " +
+        message +
+        " | Line: " +
+        lineno +
+        " | Column: " +
+        colno,
+        "error"
+    );
+
+    return false;
+};
+
+
+/* =========================================
+   SCRIPT START
+========================================= */
+
+showDiagnostic(
+    "1️⃣ project.js تم تحميله بنجاح",
+    "success"
+);
+
+
+/* =========================================
+   INIT
+========================================= */
+
+function initProjectPage() {
+
+    showDiagnostic(
+        "2️⃣ initProjectPage() اشتغلت",
+        "success"
+    );
+
 
     /* =========================================
        PROJECT DATA
@@ -14,11 +120,15 @@
     var projects = {
 
         nexo: {
+
             category: "E-COMMERCE",
+
             title: "NEXO",
+
             subtitle: "Mobile Store",
 
-            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762153/nexo_qcud5t.mp4",
+            video:
+                "https://res.cloudinary.com/jc28wib9/video/upload/v1787762153/nexo_qcud5t.mp4",
 
             description:
                 "متجر إلكتروني عصري لبيع الأجهزة والهواتف بتجربة مستخدم حديثة وتصميم متجاوب.",
@@ -45,14 +155,20 @@
                 "فلترة المنتجات",
                 "ترتيب المنتجات"
             ]
+
         },
 
+
         roqan: {
+
             category: "COFFEE BRAND",
+
             title: "Roqan",
+
             subtitle: "Coffee",
 
-            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762155/roqan_vycy0r.mp4",
+            video:
+                "https://res.cloudinary.com/jc28wib9/video/upload/v1787762155/roqan_vycy0r.mp4",
 
             description:
                 "تجربة رقمية سينمائية لعلامة قهوة فاخرة تجمع بين الهوية السعودية والتصميم العصري.",
@@ -78,14 +194,20 @@
                 "تجربة تفاعلية",
                 "تصميم متجاوب"
             ]
+
         },
 
+
         burger: {
+
             category: "RESTAURANT",
+
             title: "Hero",
+
             subtitle: "Burger",
 
-            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762150/burger_txskf0.mp4",
+            video:
+                "https://res.cloudinary.com/jc28wib9/video/upload/v1787762150/burger_txskf0.mp4",
 
             description:
                 "موقع مطعم تفاعلي بتجربة بصرية جذابة يركز على إبراز المنتجات وتشجيع المستخدم على الطلب.",
@@ -111,14 +233,20 @@
                 "تصميم للجوال",
                 "واجهة سهلة الاستخدام"
             ]
+
         },
 
+
         abaya: {
+
             category: "FASHION E-COMMERCE",
+
             title: "rahil",
+
             subtitle: "Abaya",
 
-            video: "https://res.cloudinary.com/jc28wib9/video/upload/v1787762411/abaya_vkzcuw.mp4",
+            video:
+                "https://res.cloudinary.com/jc28wib9/video/upload/v1787762411/abaya_vkzcuw.mp4",
 
             description:
                 "تجربة متجر إلكتروني لعلامة أزياء خليجية فاخرة تجمع بين البساطة والفخامة.",
@@ -145,135 +273,128 @@
                 "فلترة المنتجات",
                 "تصميم متجاوب"
             ]
+
         }
 
     };
 
 
+    showDiagnostic(
+        "3️⃣ بيانات المشاريع تم تحميلها",
+        "success"
+    );
+
+
     /* =========================================
-       INIT
+       GET PROJECT PAGE
     ========================================= */
 
-    function initProjectPage() {
-
-        console.log("PROJECT JS STARTED");
-
-
-        /* =========================================
-           FIND CONTAINER
-        ========================================= */
-
-        var page = document.getElementById("projectPage");
-
-        if (!page) {
-            console.error("projectPage NOT FOUND");
-            return;
-        }
-
-        console.log("projectPage FOUND");
+    var page =
+        document.getElementById("projectPage");
 
 
-        /* =========================================
-           GET PROJECT NAME
-        ========================================= */
+    if (!page) {
 
-        var projectName = "nexo";
-try {
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("project")) {
-        projectName = urlParams.get("project").trim().toLowerCase();
+        showDiagnostic(
+            "❌ 4️⃣ لم يتم العثور على #projectPage",
+            "error"
+        );
+
+        return;
     }
-} catch (error) {
-    console.error("PROJECT URL ERROR:", error);
-}
 
 
-        console.log("PROJECT:", projectName);
+    showDiagnostic(
+        "4️⃣ تم العثور على #projectPage",
+        "success"
+    );
 
 
-        /* =========================================
-           FIND PROJECT
-        ========================================= */
+    /* =========================================
+       GET URL
+    ========================================= */
 
-        var project = projects[projectName];
-
-
-        if (!project) {
-
-            page.innerHTML =
-                '<section class="project-detail">' +
-                    '<div class="project-detail-header">' +
-
-                        '<span class="project-category-detail">' +
-                            'PROJECT NOT FOUND' +
-                        '</span>' +
-
-                        '<h1>' +
-                            'المشروع ' +
-                            '<span>غير موجود</span>' +
-                        '</h1>' +
-
-                        '<p class="project-description">' +
-                            'عذرًا، لم يتم العثور على المشروع المطلوب.' +
-                        '</p>' +
-
-                        '<a href="./index.html#projects" class="next-project">' +
-                            'العودة للمشاريع' +
-                        '</a>' +
-
-                    '</div>' +
-                '</section>';
-
-            return;
-        }
+    var projectName = "nexo";
 
 
-        /* =========================================
-           TITLE
-        ========================================= */
+    try {
 
-        document.title =
-            project.title +
-            " " +
-            project.subtitle +
-            " | Marwa Hussin";
+        var search =
+            window.location.search || "";
 
 
-        /* =========================================
-           TECHNOLOGIES
-        ========================================= */
+        showDiagnostic(
+            "5️⃣ URL Search: " + search
+        );
 
-        var technologiesHTML = "";
 
-        for (var i = 0; i < project.technologies.length; i++) {
+        var match =
+            search.match(
+                /[?&]project=([^&]+)/i
+            );
 
-            technologiesHTML +=
-                "<span>" +
-                project.technologies[i] +
-                "</span>";
+
+        if (match && match[1]) {
+
+            projectName =
+                decodeURIComponent(
+                    match[1]
+                )
+                .trim()
+                .toLowerCase();
 
         }
 
 
-        /* =========================================
-           FEATURES
-        ========================================= */
+        showDiagnostic(
+            "6️⃣ اسم المشروع: " +
+            projectName,
+            "success"
+        );
 
-        var featuresHTML = "";
+    } catch (error) {
 
-        for (var j = 0; j < project.features.length; j++) {
+        showDiagnostic(
+            "❌ خطأ أثناء قراءة الرابط: " +
+            error.message,
+            "error"
+        );
 
-            featuresHTML +=
-                '<div class="project-feature">' +
-                    project.features[j] +
-                '</div>';
-
-        }
+    }
 
 
-        /* =========================================
-           CREATE PAGE
-        ========================================= */
+    /* =========================================
+       FIND PROJECT
+    ========================================= */
+
+    var project =
+        projects[projectName];
+
+
+    if (!project) {
+
+        showDiagnostic(
+            "❌ المشروع غير موجود داخل projects: " +
+            projectName,
+            "error"
+        );
+
+        return;
+    }
+
+
+    showDiagnostic(
+        "7️⃣ تم العثور على المشروع: " +
+        project.title,
+        "success"
+    );
+
+
+    /* =========================================
+       CREATE HTML
+    ========================================= */
+
+    try {
 
         page.innerHTML =
 
@@ -303,16 +424,21 @@ try {
 
                     '<video ' +
                         'class="project-main-video" ' +
+                        'autoplay ' +
                         'muted ' +
                         'loop ' +
                         'playsinline ' +
                         'webkit-playsinline ' +
                         'controls ' +
-                        'preload="metadata">' +
+                        'preload="metadata"' +
+                    '>' +
 
                         '<source ' +
-                            'src="' + project.video + '" ' +
-                            'type="video/mp4">' +
+                            'src="' +
+                                project.video +
+                            '" ' +
+                            'type="video/mp4"' +
+                        '>' +
 
                         'متصفحك لا يدعم تشغيل الفيديو.' +
 
@@ -322,7 +448,6 @@ try {
 
 
                 '<div class="project-info-grid">' +
-
 
                     '<div class="project-info-block">' +
 
@@ -363,7 +488,13 @@ try {
                         '<h2>التقنيات</h2>' +
 
                         '<div class="project-technologies">' +
-                            technologiesHTML +
+
+                            project.technologies
+                                .map(function (tech) {
+                                    return '<span>' + tech + '</span>';
+                                })
+                                .join("") +
+
                         '</div>' +
 
                     '</div>' +
@@ -378,11 +509,18 @@ try {
                         '<h2>المميزات</h2>' +
 
                         '<div class="project-features">' +
-                            featuresHTML +
+
+                            project.features
+                                .map(function (feature) {
+                                    return '<div class="project-feature">' +
+                                        feature +
+                                    '</div>';
+                                })
+                                .join("") +
+
                         '</div>' +
 
                     '</div>' +
-
 
                 '</div>' +
 
@@ -402,8 +540,14 @@ try {
 
                     '</div>' +
 
-                    '<a href="./index.html#contact" class="next-project">' +
-                        'تواصل معي <span>↗</span>' +
+                    '<a ' +
+                        'href="./index.html#contact" ' +
+                        'class="next-project"' +
+                    '>' +
+
+                        'تواصل معي ' +
+                        '<span>↗</span>' +
+
                     '</a>' +
 
                 '</div>' +
@@ -411,122 +555,192 @@ try {
             '</section>';
 
 
-        console.log("PROJECT HTML INSERTED");
+        showDiagnostic(
+            "8️⃣ تم إنشاء HTML للمشروع بنجاح",
+            "success"
+        );
 
 
-        /* =========================================
-           VIDEO
-        ========================================= */
+    } catch (error) {
 
-        var video =
-            page.querySelector(".project-main-video");
+        showDiagnostic(
+            "❌ خطأ أثناء إنشاء HTML: " +
+            error.message,
+            "error"
+        );
 
-
-        if (!video) {
-
-            console.warn("VIDEO NOT FOUND");
-
-            return;
-
-        }
+        return;
+    }
 
 
-        /* =========================================
-           SAFARI VIDEO SETTINGS
-        ========================================= */
+    /* =========================================
+       VIDEO
+    ========================================= */
 
-        video.muted = true;
-        video.defaultMuted = true;
-        video.loop = true;
-
-
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
-        video.setAttribute("loop", "");
+    var video =
+        page.querySelector(
+            ".project-main-video"
+        );
 
 
-        /* =========================================
-           VIDEO EVENTS
-        ========================================= */
+    if (!video) {
 
-        video.addEventListener("loadedmetadata", function () {
+        showDiagnostic(
+            "❌ لم يتم العثور على الفيديو",
+            "error"
+        );
 
-            console.log("VIDEO METADATA LOADED");
-
-        });
-
-
-        video.addEventListener("canplay", function () {
-
-            console.log("VIDEO CAN PLAY");
-
-        });
+        return;
+    }
 
 
-        video.addEventListener("error", function () {
+    showDiagnostic(
+        "9️⃣ تم العثور على عنصر الفيديو",
+        "success"
+    );
 
-            console.warn(
-                "VIDEO ERROR:",
-                video.error
+
+    /* =========================================
+       VIDEO SETTINGS
+    ========================================= */
+
+    video.muted = true;
+
+    video.defaultMuted = true;
+
+    video.autoplay = true;
+
+    video.loop = true;
+
+    video.playsInline = true;
+
+
+    showDiagnostic(
+        "🔟 إعدادات الفيديو تم تطبيقها",
+        "success"
+    );
+
+
+    /* =========================================
+       VIDEO EVENTS
+    ========================================= */
+
+    video.addEventListener(
+        "loadedmetadata",
+        function () {
+
+            showDiagnostic(
+                "🎬 VIDEO: metadata loaded",
+                "success"
             );
 
-        });
+        }
+    );
 
 
-        /* =========================================
-           PLAY VIDEO
-        ========================================= */
+    video.addEventListener(
+        "canplay",
+        function () {
 
-        try {
+            showDiagnostic(
+                "🎬 VIDEO: canplay",
+                "success"
+            );
 
-            var playPromise = video.play();
+        }
+    );
 
-            if (
-                playPromise &&
-                typeof playPromise.catch === "function"
-            ) {
 
-                playPromise.catch(function () {
+    video.addEventListener(
+        "error",
+        function () {
 
-                    console.warn(
-                        "Autoplay blocked - user can press play"
+            showDiagnostic(
+                "❌ VIDEO ERROR",
+                "error"
+            );
+
+        }
+    );
+
+
+    /* =========================================
+       PLAY VIDEO
+    ========================================= */
+
+    try {
+
+        var playPromise =
+            video.play();
+
+
+        if (
+            playPromise &&
+            typeof playPromise.catch === "function"
+        ) {
+
+            playPromise.catch(
+                function (error) {
+
+                    showDiagnostic(
+                        "⚠️ Autoplay blocked: " +
+                        error.message,
+                        "error"
                     );
 
-                });
-
-            }
-
-        } catch (error) {
-
-            console.warn(
-                "VIDEO PLAY ERROR:",
-                error
+                }
             );
 
         }
 
+    } catch (error) {
 
-        console.log("PROJECT LOADED SUCCESSFULLY");
+        showDiagnostic(
+            "❌ Video play error: " +
+            error.message,
+            "error"
+        );
 
     }
 
 
     /* =========================================
-       DOM READY
+       SUCCESS
     ========================================= */
 
-    if (document.readyState === "loading") {
+    showDiagnostic(
+        "✅ PROJECT JS انتهى بدون خطأ",
+        "success"
+    );
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            initProjectPage
-        );
+}
 
-    } else {
 
-        initProjectPage();
+/* =========================================
+   DOM READY
+========================================= */
 
-    }
+if (
+    document.readyState === "loading"
+) {
 
-})();
+    showDiagnostic(
+        "⏳ انتظار DOMContentLoaded..."
+    );
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initProjectPage
+    );
+
+} else {
+
+    showDiagnostic(
+        "⚡ DOM جاهز، تشغيل المشروع..."
+    );
+
+
+    initProjectPage();
+
+}
