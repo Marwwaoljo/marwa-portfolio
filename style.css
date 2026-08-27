@@ -1740,10 +1740,19 @@ footer {
     color: var(--gold-light);
     transform: translate(-3px, -3px);
 }
-video::-webkit-media-controls {
+/* =========================================
+   HIDE SAFARI VIDEO PLAY BUTTON
+========================================= */
+
+.project-video::-webkit-media-controls {
     display: none !important;
 }
 
-video::-webkit-media-controls-start-playback-button {
+.project-video::-webkit-media-controls-panel {
     display: none !important;
+}
+
+.project-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
 }
