@@ -1703,7 +1703,6 @@ footer {
     object-fit: contain;
     background: #090909;
     transition: transform 0.7s ease;
-    pointer-events: none; /* يمنع ظهور زر التشغيل عند اللمس */
 }
 
 
