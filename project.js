@@ -5,7 +5,7 @@
 
 "use strict";
 
-
+alert("PROJECT JS FILE LOADED");
 /* =========================================
    START APPLICATION
 ========================================= */
