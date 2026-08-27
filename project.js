@@ -204,74 +204,27 @@
             "projectPage FOUND"
         );
 
+var projectName = "nexo";
 
-        /* =========================================
-           GET PROJECT NAME
-           Safari Safe
-        ========================================= */
+try {
 
-        var projectName = "nexo";
-var urlParams = new URLSearchParams(window.location.search);
+    var search = window.location.search || "";
 
-if (urlParams.has("project")) {
-    projectName = urlParams.get("project").toLowerCase().trim();
+    var match = search.match(/[?&]project=([^&]+)/i);
+
+    if (match && match[1]) {
+
+        projectName = decodeURIComponent(match[1])
+            .trim()
+            .toLowerCase();
+
+    }
+
+} catch (error) {
+
+    console.warn("PROJECT URL ERROR:", error);
+
 }
-
-        try {
-
-            var search =
-                window.location.search || "";
-
-
-            console.log(
-                "URL:",
-                window.location.href
-            );
-
-
-            console.log(
-                "SEARCH:",
-                search
-            );
-
-
-            if (search.length > 0) {
-
-                var match =
-                    search.match(
-                        /[?&]project=([^&]+)/i
-                    );
-
-
-                if (match && match[1]) {
-
-                    projectName =
-                        decodeURIComponent(
-                            match[1]
-                        )
-                        .trim()
-                        .toLowerCase();
-
-                }
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "PROJECT URL ERROR:",
-                error
-            );
-
-        }
-
-
-        console.log(
-            "PROJECT REQUESTED:",
-            projectName
-        );
-
-
         /* =========================================
            FIND PROJECT
         ========================================= */
@@ -724,13 +677,6 @@ if (urlParams.has("project")) {
 
 
         /* =========================================
-           VIDEO LOAD
-        ========================================= */
-
-        video.load();
-
-
-        /* =========================================
            VIDEO EVENTS
         ========================================= */
 
@@ -813,57 +759,6 @@ if (urlParams.has("project")) {
             );
 
         }
-
-
-        /* =========================================
-           SAFARI PAGESHOW
-        ========================================= */
-
-        window.addEventListener(
-            "pageshow",
-            function () {
-
-                console.log(
-                    "SAFARI PAGESHOW:",
-                    projectName
-                );
-
-
-                if (video) {
-
-                    try {
-
-                        video.load();
-
-                        var retry =
-                            video.play();
-
-
-                        if (
-                            retry &&
-                            typeof retry.catch === "function"
-                        ) {
-
-                            retry.catch(
-                                function () {}
-                            );
-
-                        }
-
-                    } catch (error) {
-
-                        console.warn(
-                            "SAFARI VIDEO RETRY ERROR:",
-                            error
-                        );
-
-                    }
-
-                }
-
-            }
-        );
-
 
         /* =========================================
            FINISHED
