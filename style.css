@@ -900,6 +900,7 @@ button {
 
 .project-image {
     
+    position: relative;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.06);
     transition: 0.5s;
@@ -1689,6 +1690,7 @@ footer {
 ========================================= */
 
 .project-image {
+    position: relative;
     overflow: hidden;
     background: #090909;
 }
