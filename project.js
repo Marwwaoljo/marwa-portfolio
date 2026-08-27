@@ -5,7 +5,7 @@
 
 "use strict";
 
-alert("PROJECT JS FILE LOADED");
+
 /* =========================================
    START APPLICATION
 ========================================= */
@@ -615,7 +615,7 @@ try {
 
         if (!video) {
 
-            console.warn(
+            alert(
                 "VIDEO NOT FOUND"
             );
 
