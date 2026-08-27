@@ -209,15 +209,12 @@
            GET PROJECT NAME
            Safari Safe
         ========================================= */
-/* =========================================
-   GET PROJECT NAME (Safari Safe)
-========================================= */
-var projectName = "nexo";
+
+   var projectName = "nexo";
 var urlParams = new URLSearchParams(window.location.search);
 
 if (urlParams.has("project")) {
     projectName = urlParams.get("project").toLowerCase().trim();
-
 }
 
         /* =========================================
