@@ -177,6 +177,82 @@
                     "تصميم متجاوب"
                 ]
 
+            },
+              building: {
+
+                category: "building",
+
+                title: "new",
+
+                subtitle: "building",
+
+                video:
+                    "https://res.cloudinary.com/jc28wib9/video/upload/v1788391401/Video_Project_46_lvf1rd.mp4",
+
+                description:
+                    "موقع شركة عقارية حديثة  تفاعلي بتجربة بصرية جذابة يركز على إبراز المباني وتشجيع المستخدم على التواصل.",
+
+                about:
+                    "تم تصميم الموقع ليقدم تجربة ممتعة منذ اللحظة الأولى، مع التركيز على الصور والحركة وسهولة الوصول إلى لما يريده المستخدم.",
+
+                role:
+                    "تصميم وتطوير الواجهة، بناء أقسام المنتجات، إضافة الحركات والتفاعلات وتجهيز الموقع للجوال.",
+
+                technologies: [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript",
+                    "Animation",
+                    "Responsive Design"
+                ],
+
+                features: [
+                    "Hero تفاعلي",
+                    "عرض المنتجات",
+                    "Animations",
+                    "تصميم للجوال",
+                    "واجهة سهلة الاستخدام"
+                ]
+
+            },
+
+
+            coffe: {
+
+                category: "new coffe",
+
+                title: "new",
+
+                subtitle: "coffe",
+
+                video:
+                    "https://res.cloudinary.com/jc28wib9/video/upload/v1788392860/075b8627a5214537bfbc2a11aea7526a_osvq6w.mp4",
+
+                description:
+                    "تجربة متجر إلكتروني للكوفيهات  الحديثة فاخرة تجمع بين البساطة والفخامة.",
+
+                about:
+                    "تم تصميم التجربة لتعكس الفخامة والبساطة، مع إبراز تفاصيل المنتجات وتسهيل عملية تصفح المنتجات.",
+
+                role:
+                    "تصميم الواجهة، تجربة المستخدم، صفحات المنتجات، التفاعلات وتجهيز الموقع لمختلف الشاشات.",
+
+                technologies: [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript",
+                    "E-Commerce",
+                    "Responsive Design"
+                ],
+
+                features: [
+                    "صفحة منتجات",
+                    "صور متعددة",
+                    "Cart",
+                    "فلترة المنتجات",
+                    "تصميم متجاوب"
+                ]
+
             }
 
         };
